@@ -1,0 +1,26 @@
+{
+  "name": "adobe-cep-polyfill",
+  "version": "1.0.0",
+  "description": "Polyfills the CEPEngine global variables―allowing your plugin to run in the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fuse-fonts/adobe-cep-polyfill.git"
+  },
+  "keywords": [
+    "adobe",
+    "cep",
+    "polyfill",
+    "cepengine",
+    "csinterface"
+  ],
+  "author": "Rory Duncan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fuse-fonts/adobe-cep-polyfill/issues"
+  },
+  "homepage": "https://github.com/fuse-fonts/adobe-cep-polyfill#readme"
+}
