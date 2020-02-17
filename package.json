@@ -1,6 +1,6 @@
 {
   "name": "adobe-cep-polyfill",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Polyfills the CEPEngine global variables―allowing your plugin to run in the browser",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,9 @@
     "polyfill",
     "cepengine",
     "csinterface"
+  ],
+  "files": [
+    "index.js"
   ],
   "author": "Rory Duncan",
   "license": "ISC",
