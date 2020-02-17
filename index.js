@@ -11,7 +11,7 @@ class NotImplemented extends Error {
 /**
  *
  * @param {*} hostEnvironment An override of the host environment.
- *    In a running plugin this can be accessed via CSInterface via new CSInterface().hostEnvironment
+ *    In a running plugin this can be accessed via CSInterface by calling new CSInterface().hostEnvironment
  * @param {*} extension The details of your extension
  */
 export default function adobe_cep_polyfill(hostEnvironment, extension) {
