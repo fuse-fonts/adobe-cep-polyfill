@@ -25,7 +25,7 @@ export default function adobe_cep_polyfill(hostEnvironment, extension) {
    */
   const _hostEnvironment = Object.assign({
 
-    appVersion: "20.0.6",
+    appVersion: "21.1.0",
     appLocale: "en_US",
     isAppOnline: true,
     appUILocale: "en_US",
