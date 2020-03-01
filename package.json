@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/fuse-fonts/adobe-cep-polyfill/issues"
   },
-  "homepage": "https://github.com/fuse-fonts/adobe-cep-polyfill#readme"
+  "homepage": "https://github.com/fuse-fonts/adobe-cep-polyfill#readme",
+  "devDependencies": {
+    "jest": "^25.1.0"
+  }
 }
