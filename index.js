@@ -88,8 +88,6 @@ export default function adobe_cep_polyfill(hostEnvironment, extension) {
     id: "your.extension",
   }, extension || null);
 
-  const interface = "__adobe_cep__";
-
   if (!window.__adobe_cep__) {
 
     window.__adobe_cep__ = {
