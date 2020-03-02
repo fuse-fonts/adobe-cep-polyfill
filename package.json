@@ -4,8 +4,10 @@
   "description": "Polyfills the CEPEngine global variables―allowing your plugin to run in the browser",
   "main": "index.js",
   "scripts": {
+    "get-csinterface": "curl -O -L 'https://raw.githubusercontent.com/Adobe-CEP/CEP-Resources/master/CEP_9.x/CSInterface.js' && mv CSInterface.js tests/CSInterface.js",
     "convert-to-cjs": "npx rollup index.js --file tests/index.testable.js --format cjs --silent",
-    "test": "npm run convert-to-cjs && npx jest"
+    "test:setup": "npm run convert-to-cjs & npm run get-csinterface",
+    "test": "npx jest"
   },
   "repository": {
     "type": "git",

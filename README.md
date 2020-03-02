@@ -78,3 +78,29 @@ Which powers this demo page: [Fuse Fonts Web Demo](https://fuse-fonts-demo.fireb
 
 This polyfill is fairly approachable, and isn't doing anything complex.
 You can view the source and get an idea of everything it's doing pretty quickly: [index.js](index.js)
+
+
+# Contributing
+
+## Tests
+
+
+### Tests setup
+
+Before running tests we need to:
+- transform our es6 module into a `require`-able common js format
+- download `CSInterface.js` (from [Adobe CEP Resources repo](https://github.com/Adobe-CEP/CEP-Resources/blob/master/CEP_9.x/CSInterface.js))
+
+These are both accomplished for you via:
+
+```
+npm run test:setup
+```
+
+### Running Tests
+
+Run tests the standard npm package way:
+
+```
+npm run test
+```
