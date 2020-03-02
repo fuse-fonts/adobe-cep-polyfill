@@ -9,12 +9,14 @@ class NotImplemented extends Error {
 
 
 /**
- *
- * @param {*} hostEnvironment An override of the host environment.
+ * @param {*} options Optional key-values to alter polyfill functionality
+ * @param {*} options.hostEnvironment An override of the host environment.
  *    In a running plugin this can be accessed via CSInterface by calling new CSInterface().hostEnvironment
- * @param {*} extension The details of your extension
+ * @param {*} options.extension The details of your extension
+ * @param {*} options.logToConsole The details of your extension
  */
-export default function adobe_cep_polyfill(hostEnvironment, extension) {
+export default function adobe_cep_polyfill({ hostEnvironment, logToConsole, extension } = {}) {
+  const log = typeof logToConsole === "undefined" ? console.log : () => {};
 
   /**
    * the host environment we will use internally.
@@ -84,34 +86,38 @@ export default function adobe_cep_polyfill(hostEnvironment, extension) {
     }
   }, hostEnvironment || null);
 
+  const dummyData = { dummy: "data", };
+
   const _extension = Object.assign({
     id: "your.extension",
   }, extension || null);
-
-  const interface = "__adobe_cep__";
 
   if (!window.__adobe_cep__) {
 
     window.__adobe_cep__ = {
       addEventListener: function () {
-        console.log("__adobe_cep__.addEventListener called")
+        log("__adobe_cep__.addEventListener called");
       },
       autoThemeColorChange: function () {
-        console.log("__adobe_cep__.autoThemeColorChange called")
+        log("__adobe_cep__.autoThemeColorChange called");
       },
       closeExtension: function () {
-        console.log("__adobe_cep__.closeExtension called")
+        log("__adobe_cep__.closeExtension called");
       },
       dispatchEvent: function () {
-        console.log("__adobe_cep__.dispatchEvent called")
+        log("__adobe_cep__.dispatchEvent called");
       },
       dumpInstallationInfo: function () {
-        console.log("__adobe_cep__.dumpInstallationInfo called")
+        log("__adobe_cep__.dumpInstallationInfo called");
       },
+      loadSnapshot: function() {
+        log("__adobe_cep__.loadSnapshot called");
+      },
+
       evalScript: function (script, callback) {
 
         const functionName = script.split("(")[0];
-        console.log("__adobe_cep__.evalScript called with", functionName);
+        log("__adobe_cep__.evalScript called with", functionName);
         if (functionName in window) {
           eval(script)
             .then(result => {
@@ -120,86 +126,91 @@ export default function adobe_cep_polyfill(hostEnvironment, extension) {
 
         }
         else {
-          console.warn(`evalScript "${functionName}" doesn't exist in this context.`);
+          log(`evalScript "${functionName}" doesn't exist in this context.`);
         }
       },
       getCurrentApiVersion: function () {
-        console.log("__adobe_cep__.getCurrentApiVersion called")
+        log("__adobe_cep__.getCurrentApiVersion called");
         return JSON.stringify({ minor: 2, micro: 1, major: 9 });
       },
       getCurrentImsUserId: function () {
-        console.log("__adobe_cep__.getCurrentImsUserId called")
+        log("__adobe_cep__.getCurrentImsUserId called");
       },
       getExtensionId: function () {
         return _extension.id;
       },
       getExtensions: function () {
-        console.log("__adobe_cep__.getExtensions called")
+        log("__adobe_cep__.getExtensions called");
+        return JSON.stringify([]);
       },
       getHostCapabilities: function () {
-        console.log("__adobe_cep__.getHostCapabilities called")
+        log("__adobe_cep__.getHostCapabilities called");
+        return JSON.stringify(dummyData);
       },
       getHostEnvironment: function () {
-        console.log("__adobe_cep__.getHostEnvironment called");
+        log("__adobe_cep__.getHostEnvironment called");
         return JSON.stringify(_hostEnvironment);
       },
       getMonitorScaleFactor: function () {
-        console.log("__adobe_cep__.getMonitorScaleFactor called")
+        log("__adobe_cep__.getMonitorScaleFactor called");
       },
       getNetworkPreferences: function () {
-        console.log("__adobe_cep__.getNetworkPreferences called")
+        log("__adobe_cep__.getNetworkPreferences called");
+        return JSON.stringify(dummyData);
       },
       getScaleFactor: function () {
         return 1;
       },
       getSystemPath: function () {
-        console.log("__adobe_cep__.getSystemPath called");
+        log("__adobe_cep__.getSystemPath called");
         return "Your Hard Drive/"
       },
       imsConnect: function () {
-        console.log("__adobe_cep__.imsConnect called")
+        log("__adobe_cep__.imsConnect called");
       },
       imsDisconnect: function () {
-        console.log("__adobe_cep__.imsDisconnect called")
+        log("__adobe_cep__.imsDisconnect called");
       },
       imsFetchAccessToken: function () {
-        console.log("__adobe_cep__.imsFetchAccessToken called")
+        log("__adobe_cep__.imsFetchAccessToken called");
       },
       imsFetchAccounts: function () {
-        console.log("__adobe_cep__.imsFetchAccounts called")
+        log("__adobe_cep__.imsFetchAccounts called");
       },
       imsSetProxyCredentials: function () {
-        console.log("__adobe_cep__.imsSetProxyCredentials called")
+        log("__adobe_cep__.imsSetProxyCredentials called");
       },
       initResourceBundle: function () {
-        console.log("__adobe_cep__.initResourceBundle called")
+        log("__adobe_cep__.initResourceBundle called");
+        return JSON.stringify(dummyData);
+
       },
       invokeAsync: function () {
-        console.log("__adobe_cep__.invokeAsync called")
+        log("__adobe_cep__.invokeAsync called");
       },
       invokeSync: function () {
-        console.log("__adobe_cep__.invokeSync called")
+        log("__adobe_cep__.invokeSync called");
       },
       registerInvalidCertificateCallback: function () {
-        console.log("__adobe_cep__.registerInvalidCertificateCallback called");
+        log("__adobe_cep__.registerInvalidCertificateCallback called");
       },
       registerKeyEventsInterest: function () {
-        console.log("__adobe_cep__.registerKeyEventsInterest called");
+        log("__adobe_cep__.registerKeyEventsInterest called");
       },
       removeEventListener: function () {
-        console.log("__adobe_cep__.removeEventListener called");
+        log("__adobe_cep__.removeEventListener called");
       },
       requestOpenExtension: function () {
-        console.log("__adobe_cep__.requestOpenExtension called");
+        log("__adobe_cep__.requestOpenExtension called");
       },
       resizeContent: function () {
-        console.log("__adobe_cep__.resizeContent called");
+        log("__adobe_cep__.resizeContent called");
       },
       setScaleFactorChangedHandler: function () {
-        console.log("__adobe_cep__.setScaleFactorChangedHandler called");
+        log("__adobe_cep__.setScaleFactorChangedHandler called");
       },
       showAAM: function () {
-        console.log("__adobe_cep__.showAAM called");
+        log("__adobe_cep__.showAAM called");
       },
     };
 

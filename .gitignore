@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# conversion of our ES6 module to nodejs code
+tests/index.testable.js
+tests/CSInterface.js

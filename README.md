@@ -1,5 +1,5 @@
 # adobe-cep-polyfill
-Polyfills the CEPEngine global variables―allowing your plugin to run in the browser
+Polyfills the CEPEngine global variables―allowing your plugin to run in the browser.
 
 # Installation
 
@@ -22,8 +22,7 @@ polyfill();
 
 ## Usage Details
 
-`adobe-cep-polyfill` exports a function that when executed will polyfill `window.__adobe_cep__` if it's not defined. This means it is safe to call inside of your plugin.
-When executed within a CEP context, it will do nothing.
+`adobe-cep-polyfill` exports a function that when executed will polyfill `window.__adobe_cep__` and `window.cep`, if it's not defined. This means it is safe to call inside of your plugin without conflict―When executed within a CEP context, it will do nothing.
 
 Note: The polyfill function should be executed before you instantiate `CSInterface`.
 
@@ -78,3 +77,30 @@ Which powers this demo page: [Fuse Fonts Web Demo](https://fuse-fonts-demo.fireb
 
 This polyfill is fairly approachable, and isn't doing anything complex.
 You can view the source and get an idea of everything it's doing pretty quickly: [index.js](index.js)
+
+
+# Contributing
+
+## Tests
+
+The tests focus is on being able to instantiate `CSInterface`, as well as call any methods.
+
+### Tests setup
+
+Before running tests we need to:
+- transform our es6 module into a `require`-able common js format
+- download `CSInterface.js` (from [Adobe CEP Resources repo](https://github.com/Adobe-CEP/CEP-Resources/blob/master/CEP_9.x/CSInterface.js))
+
+These are both accomplished for you via:
+
+```
+npm run test:setup
+```
+
+### Running Tests
+
+Run tests the standard npm package way:
+
+```
+npm run test
+```

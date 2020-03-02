@@ -4,7 +4,11 @@
   "description": "Polyfills the CEPEngine global variables―allowing your plugin to run in the browser",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "get-csinterface": "curl -O -L 'https://raw.githubusercontent.com/Adobe-CEP/CEP-Resources/master/CEP_9.x/CSInterface.js' && mv CSInterface.js tests/CSInterface.js",
+    "create-export": "echo \"module.exports = CSInterface;\" >> tests/CSInterface.js",
+    "convert-to-cjs": "npx rollup index.js --file tests/index.testable.js --format cjs --silent",
+    "test:setup": "npm run convert-to-cjs & npm run get-csinterface & npm run create-export",
+    "test": "npm run convert-to-cjs &npx jest"
   },
   "repository": {
     "type": "git",
@@ -25,5 +29,9 @@
   "bugs": {
     "url": "https://github.com/fuse-fonts/adobe-cep-polyfill/issues"
   },
-  "homepage": "https://github.com/fuse-fonts/adobe-cep-polyfill#readme"
+  "homepage": "https://github.com/fuse-fonts/adobe-cep-polyfill#readme",
+  "devDependencies": {
+    "jest": "^25.1.0",
+    "rollup": "^1.32.0"
+  }
 }
