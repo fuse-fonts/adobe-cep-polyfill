@@ -22,8 +22,7 @@ polyfill();
 
 ## Usage Details
 
-`adobe-cep-polyfill` exports a function that when executed will polyfill `window.__adobe_cep__` if it's not defined. This means it is safe to call inside of your plugin.
-When executed within a CEP context, it will do nothing.
+`adobe-cep-polyfill` exports a function that when executed will polyfill `window.__adobe_cep__` and `window.cep`, if it's not defined. This means it is safe to call inside of your plugin without conflict―When executed within a CEP context, it will do nothing.
 
 Note: The polyfill function should be executed before you instantiate `CSInterface`.
 
