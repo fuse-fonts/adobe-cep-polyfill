@@ -4,7 +4,8 @@
   "description": "Polyfills the CEPEngine global variables―allowing your plugin to run in the browser",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "convert-to-cjs": "npx rollup index.js --file index.testable.js --format cjs --silent",
+    "test": "npm run convert-to-cjs && npx jest"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,7 @@
   },
   "homepage": "https://github.com/fuse-fonts/adobe-cep-polyfill#readme",
   "devDependencies": {
-    "jest": "^25.1.0"
+    "jest": "^25.1.0",
+    "rollup": "^1.32.0"
   }
 }
