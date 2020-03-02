@@ -15,8 +15,8 @@ class NotImplemented extends Error {
  * @param {*} options.extension The details of your extension
  * @param {*} options.logToConsole The details of your extension
  */
-export default function adobe_cep_polyfill({ hostEnvironment, logToConsole, extension }) {
-  log = typeof log === "undefined" ? console.log : () => {};
+export default function adobe_cep_polyfill({ hostEnvironment, logToConsole, extension } = {}) {
+  const log = typeof logToConsole === "undefined" ? console.log : () => {};
 
   /**
    * the host environment we will use internally.
