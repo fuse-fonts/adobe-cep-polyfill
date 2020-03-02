@@ -4,7 +4,7 @@
   "description": "Polyfills the CEPEngine global variables―allowing your plugin to run in the browser",
   "main": "index.js",
   "scripts": {
-    "convert-to-cjs": "npx rollup index.js --file index.testable.js --format cjs --silent",
+    "convert-to-cjs": "npx rollup index.js --file tests/index.testable.js --format cjs --silent",
     "test": "npm run convert-to-cjs && npx jest"
   },
   "repository": {
