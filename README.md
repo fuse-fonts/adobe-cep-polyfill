@@ -1,5 +1,5 @@
 # adobe-cep-polyfill
-Polyfills the CEPEngine global variables―allowing your plugin to run in the browser
+Polyfills the CEPEngine global variables―allowing your plugin to run in the browser.
 
 # Installation
 
@@ -83,6 +83,7 @@ You can view the source and get an idea of everything it's doing pretty quickly:
 
 ## Tests
 
+The tests focus is on being able to instantiate `CSInterface`, as well as call any methods.
 
 ### Tests setup
 
