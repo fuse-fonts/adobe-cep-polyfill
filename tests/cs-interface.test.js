@@ -1,8 +1,6 @@
 global.window = window;
 const CSInterface = require("./CSInterface.js");
 
-console.log(CSInterface)
-
 
 
 const polyfill = require("./index.testable.js");
