@@ -146,3 +146,30 @@ describe("CSInterface method Safety", () => {
     });
 
 });
+
+describe("evalScript", () => {
+  const cs = new CSInterface();
+  window.callbackRuns = () => new Promise(resolve => resolve());
+  window.add = (x, y) => new Promise(resolve => resolve(JSON.stringify({ result: x + y, })));
+
+  it("calls callback", async () => {
+    const callback = jest.fn();
+
+    await new Promise(resolve => cs.evalScript("callbackRuns()", () => {
+      callback();
+      resolve();
+    }))
+      .then(() => expect(callback).toHaveBeenCalled());
+
+  });
+
+  it("can call evalScript with arguments", () => {
+    cs.evalScript("add(10, 40)", (result) => {
+      expect(JSON.parse(result).result).toEqual(50);
+    });
+
+  });
+
+});
+
+
