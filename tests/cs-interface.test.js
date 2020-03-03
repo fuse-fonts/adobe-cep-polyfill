@@ -5,8 +5,13 @@ const polyfill = require("./index.testable.js");
 
 beforeAll(() => polyfill({ logToConsole: false, }));
 
-describe("CSInterface Safety", () => {
-  const cs = new CSInterface();
+test("can instantiate CSInterface", () => {
+  expect(new CSInterface()).toEqual(expect.any(CSInterface));
+})
+
+describe("CSInterface method Safety", () => {
+
+    const cs = new CSInterface();
 
     test("can call getHostEnvironment", () => {
       expect(() => cs.getHostEnvironment()).not.toThrow();
@@ -139,6 +144,11 @@ describe("CSInterface Safety", () => {
     test("can call getWindowTitle", () => {
       expect(() => cs.getWindowTitle()).not.toThrow();
     });
+
+});
+
+describe("CSInterface", () => {
+  const cs = new CSInterface();
 
 });
 
