@@ -146,10 +146,3 @@ describe("CSInterface method Safety", () => {
     });
 
 });
-
-describe("CSInterface", () => {
-  const cs = new CSInterface();
-
-});
-
-
