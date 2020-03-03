@@ -33,7 +33,7 @@ Running this polyfill allows most of `CSInterace` methods to be called without a
 
 To get around that, [the polyfill'd `evalScript` will check the `window` for a key matching your evalScript](https://github.com/fuse-fonts/adobe-cep-polyfill/blob/master/index.js#L111-L125).
 
-This allows you to write functions that mock your host scripts. The functions should return JSON.stringified objects.
+This allows you to write functions that mock your host scripts. The functions should return Promises that resolve to JSON.stringified objects. Note: Returning promises helps us hook into the callback that is passed to evalScript.
 
 
 ##### Basic Example
@@ -50,7 +50,7 @@ const cs = new CSInterface();
 // or however you please―as long as it is called before the cs.evalScript is called.
 window.addTwoNumbers = (x, y) => {
   // needs to be a JSON stringifiedresult
-  return JSON.stringify({ result: x + y  });
+  return new Promise(resolve => resolve(JSON.stringify({ result: x + y  })));
 };
 
 // ... some time later
